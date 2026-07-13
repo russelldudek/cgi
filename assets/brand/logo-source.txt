@@ -1,0 +1,4 @@
+Official source: https://www.cgi.com/en/cgi-logo
+Official logo pack: https://www.cgi.com/sites/default/files/logos/CGI_logo_source_files.zip
+Extracted source path: .brand-work/logo-pack/CGI_logo_color_rgb.svg
+CGI logo red: Pantone 186C; RGB 227, 25, 55; #E31937.
