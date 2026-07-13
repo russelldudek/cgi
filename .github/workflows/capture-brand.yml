@@ -1,0 +1,78 @@
+name: Capture official CGI brand assets
+
+on:
+  push:
+    paths:
+      - '.github/workflows/capture-brand.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch logo pack and typography evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p assets/brand .brand-work
+          curl -L --fail --retry 3 'https://www.cgi.com/sites/default/files/logos/CGI_logo_source_files.zip' -o .brand-work/cgi-logo-pack.zip
+          unzip -q .brand-work/cgi-logo-pack.zip -d .brand-work/logo-pack
+          find .brand-work/logo-pack -type f | sort > assets/brand/logo-pack-inventory.txt
+          python - <<'PY'
+          from pathlib import Path
+          import re, shutil
+          root = Path('.brand-work/logo-pack')
+          files = [p for p in root.rglob('*') if p.is_file()]
+          svgs = [p for p in files if p.suffix.lower()=='.svg']
+          pngs = [p for p in files if p.suffix.lower()=='.png']
+          def score(p):
+              n=p.name.lower()
+              return (('rgb' in n or 'red' in n or '186' in n)*20 + ('horizontal' in n or 'primary' in n)*8 + ('white' not in n and 'black' not in n)*4 - len(n)/1000)
+          candidates=svgs or pngs
+          if not candidates:
+              raise SystemExit('No web-usable logo asset found in official pack')
+          chosen=max(candidates,key=score)
+          dest=Path('assets/brand/cgi-logo'+chosen.suffix.lower())
+          shutil.copyfile(chosen,dest)
+          Path('assets/brand/logo-source.txt').write_text(
+              'Official source: https://www.cgi.com/en/cgi-logo\n'
+              'Official logo pack: https://www.cgi.com/sites/default/files/logos/CGI_logo_source_files.zip\n'
+              f'Extracted source path: {chosen.as_posix()}\n'
+              'CGI logo red: Pantone 186C; RGB 227, 25, 55; #E31937.\n', encoding='utf-8')
+          PY
+          python - <<'PY'
+          from pathlib import Path
+          from urllib.parse import urljoin
+          from urllib.request import Request, urlopen
+          import re
+          html=Path('job-posting-source.html').read_text(encoding='utf-8',errors='replace')
+          css_urls=[]
+          for href in re.findall(r'<link[^>]+href=["\']([^"\']+\.css[^"\']*)',html,re.I):
+              css_urls.append(urljoin('https://cgi.njoyn.com/corp/xweb/xweb.asp',href))
+          families=[]
+          report=[]
+          for url in dict.fromkeys(css_urls):
+              try:
+                  raw=urlopen(Request(url,headers={'User-Agent':'Mozilla/5.0'}),timeout=30).read().decode('utf-8',errors='replace')
+                  report.append(url)
+                  families.extend(re.findall(r'font-family\s*:\s*([^;}{]+)',raw,re.I))
+              except Exception as exc:
+                  report.append(f'{url} :: {exc}')
+          cleaned=[]
+          for item in families:
+              item=' '.join(item.split())
+              if item not in cleaned: cleaned.append(item)
+          Path('assets/brand/typography-source.txt').write_text(
+              'Official CGI careers CSS sources:\n'+'\n'.join(report)+'\n\nObserved font-family declarations:\n'+'\n'.join(cleaned[:100])+'\n',encoding='utf-8')
+          PY
+          rm -rf .brand-work
+      - name: Commit official brand evidence
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/brand
+          git commit -m "Capture official CGI brand package" || exit 0
+          git push
