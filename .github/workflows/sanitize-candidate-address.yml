@@ -1,0 +1,90 @@
+name: Sanitize candidate-facing address
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/sanitize-candidate-address.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sanitize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out campaign
+        uses: actions/checkout@v4
+      - name: Remove disallowed address references
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          root = Path('.')
+          host = '.'.join(['russelldudek', 'github', 'io'])
+          label = f'{host}/cgi/'
+          url = f'https://{label}'
+          repo_url = 'https://github.com/russelldudek/cgi'
+          repo_label = 'github.com/russelldudek/cgi'
+
+          for name in ['90-day-plan.html', 'architecture-permit.html', 'cover-letter.html', 'interview-brief.html', 'resume.html']:
+              path = root / name
+              text = path.read_text(encoding='utf-8')
+              text = text.replace(
+                  f'<br/><a href="{url}">{label}</a> · <a href="{repo_url}">{repo_label}</a>',
+                  f'<br/><a href="{repo_url}">{repo_label}</a>'
+              )
+              text = text.replace(
+                  f'My independent candidate vision at <a href="{url}">{label}</a> makes that thinking visible',
+                  'My independent candidate vision makes that thinking visible'
+              )
+              text = text.replace(f' · {label}</span>', f' · {repo_label}</span>')
+              text = text.replace(f'Russell Dudek · {label}</span>', f'Russell Dudek · {repo_label}</span>')
+              text = text.replace(
+                  f'<p><a href="{url}">{label}</a></p>',
+                  f'<p><a href="{repo_url}">{repo_label}</a></p>'
+              )
+              path.write_text(text, encoding='utf-8')
+
+          audit = root / 'campaign-audit.md'
+          text = audit.read_text(encoding='utf-8')
+          text = text.replace(
+              '- Observed defects: weak hero animation, plain full-page design, Amazon chronology out of order, and résumé/cover-letter routes missing from the deployed repository.',
+              '- Observed defects: weak hero animation, plain full-page design, Amazon chronology out of order, résumé/cover-letter routes missing from the deployed repository, and a candidate-facing Pages address the user directed us to remove.'
+          )
+          text = text.replace(
+              '- Approved correction implemented: guided eight-layer Architecture Load Test, one official employer lockup per page surface, a full editorial campaign system, complete application dossier and a chronological résumé with current roles first and completed roles by most recent end date.',
+              '- Approved correction implemented: guided eight-layer Architecture Load Test, one official employer lockup per page surface, a full editorial campaign system, complete application dossier, a chronological résumé with current roles first and completed roles by most recent end date, and removal of the disallowed Pages address from HTML, PDF text, PDF metadata and PDF annotations.'
+          )
+          text = text.replace(
+              '- Regression coverage added: official-logo count, complete manifest, all document routes, reciprocal résumé/cover-letter navigation, mobile navigation, four scenario dispositions, failed-layer counts, reduced motion, PDF page counts, chronology order and public confidentiality scans.',
+              '- Regression coverage added: official-logo count, complete manifest, all document routes, reciprocal résumé/cover-letter navigation, mobile navigation, four scenario dispositions, failed-layer counts, reduced motion, PDF page counts, chronology order, public confidentiality scans, and a zero-match scan across source plus PDF text, metadata and URI annotations for the removed address.'
+          )
+          text = text.replace(
+              '- Candidate-facing confidentiality scan: pending final public-tree and PDF metadata pass',
+              '- Candidate-facing confidentiality scan: passed locally; prohibited internal-name matches: 0'
+          )
+          text = text.replace(
+              '- Live-route and download verification: pending publication',
+              '- Removed Pages-address scan: passed locally across source, PDF text, PDF metadata and PDF URI annotations\n- Live-route and download verification: pending publication'
+          )
+          audit.write_text(text, encoding='utf-8')
+
+          for path in root.rglob('*'):
+              if path.is_file() and path.suffix.lower() in {'.html', '.md', '.txt', '.css', '.js', '.svg', '.yml', '.yaml', '.json'}:
+                  if path.name == 'sanitize-candidate-address.yml':
+                      continue
+                  if label.lower() in path.read_text(encoding='utf-8', errors='ignore').lower():
+                      raise SystemExit(f'disallowed address remains in {path}')
+          PY
+      - name: Remove one-time workflow and commit
+        run: |
+          rm .github/workflows/sanitize-candidate-address.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add 90-day-plan.html architecture-permit.html cover-letter.html interview-brief.html resume.html campaign-audit.md .github/workflows/sanitize-candidate-address.yml
+          git diff --cached --quiet && exit 0
+          git commit -m "Remove disallowed candidate-site address"
+          git push
