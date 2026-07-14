@@ -10,8 +10,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: publish-cgi-campaign
-  cancel-in-progress: false
+  group: publish-cgi-campaign-fast
+  cancel-in-progress: true
 
 jobs:
   publish:
