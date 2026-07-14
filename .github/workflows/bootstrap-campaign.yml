@@ -44,3 +44,5 @@ jobs:
           git add -A
           git commit -m "Publish complete CGI candidate campaign"
           git push
+
+# Retriggered after source package verification on 2026-07-13.
