@@ -31,10 +31,14 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install PDF renderer
+      - name: Use runner Chrome and install PDF libraries
+        shell: bash
         run: |
-          python -m pip install --disable-pip-version-check playwright==1.57.0 pypdf==5.9.0
-          python -m playwright install --with-deps chromium
+          python -m pip install --disable-pip-version-check playwright pypdf
+          CHROME="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
+          test -n "$CHROME"
+          sudo ln -sf "$CHROME" /usr/bin/chromium
+          /usr/bin/chromium --version
       - name: Build and validate PDFs
         run: python scripts/build-pdfs.py
       - name: Commit complete campaign
@@ -44,5 +48,3 @@ jobs:
           git add -A
           git commit -m "Publish complete CGI candidate campaign"
           git push
-
-# Retriggered after source package verification on 2026-07-13.
