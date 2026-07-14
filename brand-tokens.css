@@ -1,0 +1,16 @@
+/* CGI official/source-sampled identity + candidate-original role system */
+:root{
+ --cgi-red:#e31937; /* official: CGI logo guidelines, RGB 227 25 55 */
+ --cgi-ink:#17171a; /* source-sampled from current CGI web typography */
+ --cgi-paper:#f7f5f3; /* source-sampled neutral page field */
+ --cgi-white:#ffffff;
+ --cgi-gray:#66666c;
+ --cgi-rule:#d8d4d2;
+ --structure-blue:#315c72; /* candidate-original: architectural annotation */
+ --structure-amber:#c6872d; /* candidate-original: conditional decision */
+ --structure-green:#35745b; /* candidate-original: permit state */
+ --structure-red:#a72235; /* candidate-original: structural failure state */
+ --shadow:0 24px 70px rgba(26,22,23,.13);
+ --heading:"Trebuchet MS","Avenir Next",Arial,sans-serif;
+ --body:"Segoe UI","Source Sans Pro",Arial,sans-serif;
+}
