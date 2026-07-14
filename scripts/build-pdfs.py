@@ -27,10 +27,13 @@ OUTPUTS = {
 }
 
 FORBIDDEN = re.compile(r"role\s*[-_ ]?forge", re.IGNORECASE)
+DISALLOWED_PAGES_DOMAIN = re.compile(r"github\.io", re.IGNORECASE)
 
 
 def hydrated_html(name: str, landscape: bool) -> str:
     html = (ROOT / name).read_text(encoding="utf-8")
+    if DISALLOWED_PAGES_DOMAIN.search(html):
+        raise RuntimeError(f"{name}: disallowed Pages-domain reference detected")
     html = re.sub(r'<link[^>]+href="brand-tokens\.css"[^>]*>', "", html, flags=re.I)
     html = re.sub(r'<link[^>]+href="styles\.css"[^>]*>', "", html, flags=re.I)
     print_css = "\n@media print{@page{size:Letter landscape;margin:0}}" if landscape else ""
@@ -55,6 +58,16 @@ def validate_pdf(path: Path, expected_pages: int) -> None:
     metadata = " ".join(str(v) for v in (reader.metadata or {}).values())
     if FORBIDDEN.search(text) or FORBIDDEN.search(metadata):
         raise RuntimeError(f"{path.name}: prohibited internal-name match detected")
+
+    uri_values = []
+    for page in reader.pages:
+        for annotation_ref in page.get("/Annots") or []:
+            annotation = annotation_ref.get_object()
+            action = annotation.get("/A")
+            if action and action.get("/URI"):
+                uri_values.append(str(action.get("/URI")))
+    if any(DISALLOWED_PAGES_DOMAIN.search(value) for value in (text, metadata, *uri_values)):
+        raise RuntimeError(f"{path.name}: disallowed Pages-domain reference detected")
 
     if path.name.endswith("Resume.pdf"):
         for page_number, page in enumerate(reader.pages, start=1):
