@@ -1,0 +1,137 @@
+@media print{.entry-card{min-height:3.42in}.permit-side{break-inside:avoid}.question{display:block}.question:before{display:inline-block}}
+/* Document readability and page-balance calibration */
+.resume-doc .doc-name{font-size:27pt}.resume-doc .doc-role{font-size:10.5pt}.resume-doc .doc-contact{font-size:8.2pt;line-height:1.55}
+.resume-doc .doc-section{margin-top:.19in}.resume-doc .doc-section h2{font-size:8.7pt;margin-bottom:.095in;padding-bottom:.055in}
+.resume-doc .doc-section p,.resume-doc .doc-section li{font-size:8.9pt;line-height:1.4}.resume-doc .doc-section li{margin-bottom:.045in}
+.resume-doc .role-block{margin-bottom:.17in}.resume-doc .role-title h3{font-size:10.1pt}.resume-doc .role-title span{font-size:7.9pt}.resume-doc .role-org{font-size:8.4pt}
+.resume-doc .skills-flow{gap:.055in}.resume-doc .skills-flow span{font-size:7.5pt;padding:.04in .06in}.resume-doc .continuation{margin-bottom:.21in}.resume-doc .continuation strong{font-size:15pt}.resume-doc .continuation span{font-size:8pt}
+.cover-doc .letter-body{font-size:10.7pt;line-height:1.53}.cover-doc .letter-body p{margin:.145in 0}.cover-doc .letter-sign{margin-top:.24in}.cover-doc .doc-contact{font-size:8pt}
+.brief-doc .doc-name{font-size:27pt}.brief-doc .doc-contact{font-size:8pt}.brief-doc .doc-section{margin-top:.19in}.brief-doc .doc-section h2{font-size:8.7pt;margin-bottom:.095in}.brief-doc .doc-section p,.brief-doc .doc-section li{font-size:9pt;line-height:1.42}
+.brief-doc .brief-grid{gap:.18in}.brief-doc .brief-box{padding:.17in}.brief-doc .brief-box h3{font-size:11.5pt}.brief-doc .brief-box p,.brief-doc .brief-box li{font-size:9.1pt;line-height:1.4}.brief-doc .question{font-size:9.4pt;line-height:1.38;padding:.125in 0}.brief-doc .continuation{margin-bottom:.21in}.brief-doc .continuation strong{font-size:15pt}
+@media print{
+ .resume-doc .sheet,.cover-doc .sheet,.brief-doc .sheet{padding:.48in .58in .48in}
+}
+/* Print geometry must not inherit responsive screen collapse. */
+@media print{
+  .doc-head{grid-template-columns:1fr auto}
+  .doc-contact{text-align:right}
+  .resume-grid{grid-template-columns:1.72fr .88fr}
+  .brief-grid{grid-template-columns:repeat(2,1fr)}
+  .entry-grid{grid-template-columns:repeat(4,1fr)}
+  .entry-bottom{grid-template-columns:1.35fr .9fr}
+  .score-strip{grid-template-columns:repeat(4,1fr)}
+  .permit-layout{grid-template-columns:2.05fr .95fr}
+  .disposition-key{grid-template-columns:repeat(3,1fr)}
+  .permit-form{grid-template-columns:repeat(4,1fr)}
+  .form-cell.span2{grid-column:span 2}
+  .form-cell.span4{grid-column:span 4}
+}
+
+/* Overrides after the retained print/document system */
+@media(max-width:1180px){
+  .hero{grid-template-columns:1fr;padding-top:4rem}
+  .hero:before{inset:0 0 52% 0}
+  .hero-copy{max-width:920px}
+  .load-test{max-width:920px;width:100%;justify-self:center}
+  .mandate,.entry{grid-template-columns:1fr}
+  .building-code{grid-template-columns:1fr}
+  .code-sticky{position:static;max-width:900px}
+  .permit-workspace{grid-template-columns:1fr}
+  .permit-scenarios{grid-template-columns:repeat(4,1fr);border-left:1px solid rgba(255,255,255,.18)}
+  .permit-scenarios .scenario-control{display:block;border-right:1px solid rgba(255,255,255,.18);padding:1rem}
+  .permit-scenarios .scenario-control strong,.permit-scenarios .scenario-control small{grid-column:auto}
+  .permit-scenarios .scenario-control[aria-pressed="true"]{box-shadow:inset 0 4px 0 var(--cgi-red);padding-left:1rem}
+  .dossier-head{grid-template-columns:1fr}
+}
+@media(max-width:980px){
+  .site-header{padding:.65rem 1rem}
+  .menu-toggle{display:block}
+  .nav{display:none;position:absolute;left:1rem;right:1rem;top:calc(100% + .45rem);background:#fff;border:1px solid var(--cgi-rule);box-shadow:0 22px 60px rgba(23,23,26,.18);padding:.45rem;flex-direction:column;align-items:stretch}
+  .nav.is-open{display:flex}
+  .nav a{padding:.85rem 1rem;border-bottom:1px solid var(--cgi-rule)}
+  .nav a:last-child{border-bottom:0}
+  .section-intro,.permit-lab-head{grid-template-columns:1fr;align-items:start}
+  .pressure-ledger{grid-template-columns:repeat(2,1fr)}
+  .pressure-ledger article:nth-child(2){border-right:0}
+  .pressure-ledger article:nth-child(-n+2){border-bottom:1px solid var(--cgi-rule)}
+  .tension-axes article{grid-template-columns:130px 1fr 130px}
+  .tension-axes p{grid-column:2/4;padding-left:0}
+  .code-articles article{grid-template-columns:64px 1fr}
+  .code-articles article>span{grid-column:2}
+  .career-timeline:before{left:139px}
+  .career-timeline article{grid-template-columns:112px 1fr 60px;gap:1.6rem}
+  .career-timeline article:before{left:132px}
+  .inspection-row{grid-template-columns:120px 1fr}
+  .inspection-row>*:last-child{grid-column:2}
+  .inspection-row.header{display:none}
+  .objection{grid-template-columns:1fr}
+  .document-index article{grid-template-columns:60px 1fr}
+  .document-index article>div:last-child{grid-column:2;justify-content:flex-start}
+  .site-footer{flex-direction:column}
+}
+@media(max-width:700px){
+  .brand-lockup img{width:54px;height:36px}
+  .brand-lockup small{max-width:210px}
+  .hero{padding:3rem 1rem 4rem}
+  .hero-company-lockup{margin-bottom:2rem}
+  .hero-company-lockup img{width:70px}
+  .hero h1{font-size:clamp(3.3rem,16vw,5.2rem)}
+  .hero-actions{align-items:stretch}
+  .hero-actions .button{width:100%}
+  .hero-actions .text-link{margin-top:.35rem}
+  .load-test-head{grid-template-columns:1fr}
+  .test-progress{text-align:left;display:flex;gap:.55rem;align-items:baseline}
+  .load-canvas{min-height:390px}
+  .load-diagram{min-height:390px}
+  .load-test-readout{grid-template-columns:1fr}
+  .load-test-readout>div{border-right:0;border-bottom:1px solid rgba(255,255,255,.13)}
+  .load-test-readout>div:last-child{border-bottom:0}
+  .scenario-switcher{grid-template-columns:repeat(2,1fr)}
+  .scenario-switcher .scenario-control:nth-child(2){border-right:0}
+  .scenario-switcher .scenario-control:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.13)}
+  .pressure-ledger{grid-template-columns:1fr}
+  .pressure-ledger article{min-height:200px;border-right:0;border-bottom:1px solid var(--cgi-rule)}
+  .mandate-shift{padding:4rem 1.2rem}
+  .tension-axes article{grid-template-columns:1fr;gap:.8rem;padding:1.4rem 0}
+  .tension-axes article>span:first-child{text-align:left}
+  .tension-axes i{grid-row:2}
+  .tension-axes article>span:nth-of-type(2){grid-row:3;text-align:right}
+  .tension-axes p{grid-column:1;grid-row:4}
+  .code-articles article{grid-template-columns:52px 1fr}
+  .permit-scenarios{grid-template-columns:1fr}
+  .permit-scenarios .scenario-control{border-right:0}
+  .permit-scenarios .scenario-control[aria-pressed="true"]{box-shadow:inset 4px 0 0 var(--cgi-red)}
+  .permit-dossier header{display:grid}
+  .permit-dossier-decision{justify-self:start}
+  .permit-dossier-grid{grid-template-columns:1fr}
+  .permit-dossier footer{grid-template-columns:1fr}
+  .career-timeline:before{display:none}
+  .career-timeline article{grid-template-columns:1fr;gap:.45rem;padding:1.25rem 0}
+  .career-timeline article:before{display:none}
+  .career-timeline article>span{text-align:left;grid-row:1}
+  .evidence-boundary{grid-template-columns:1fr}
+  .inspection-row{grid-template-columns:1fr;gap:.45rem}
+  .inspection-row>*:last-child{grid-column:1}
+  .entry-schedule{grid-template-columns:1fr}
+  .entry-schedule article{min-height:260px}
+  .questions li{grid-template-columns:54px 1fr;gap:.8rem}
+  .document-index article{grid-template-columns:48px 1fr;gap:.8rem}
+  .site-footer>div{display:grid}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .code-articles article,.career-timeline article,.inspection-row,.entry-schedule article{opacity:1;transform:none}
+  .load-spine-live{stroke-dashoffset:0}
+}
+@media print{
+  .campaign-home{display:none}
+}
+
+/* Candidate-owned navigation identity; the official CGI mark appears once in the hero or document header. */
+.candidate-lockup{min-width:0}
+.candidate-lockup:before{content:"";width:5px;height:34px;background:var(--cgi-red);display:block;flex:none}
+.candidate-lockup b{color:var(--cgi-ink);letter-spacing:.13em}
+.candidate-lockup small{max-width:340px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.site-footer>div{max-width:760px}
+@media(max-width:700px){.candidate-lockup small{max-width:190px}.candidate-lockup:before{height:31px}}

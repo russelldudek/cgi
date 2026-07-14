@@ -1,45 +1,5 @@
-Official CGI careers CSS sources:
+Official CGI careers CSS evidence:
 https://cgi.njoyn.com/corp/xweb/clientfiles/cgi_v2a/2021branding/css/css_GdEXB-E-GDoc4Oykpme9jsfVlUjsUx7jEX5lbRCwSFg.css
 https://cgi.njoyn.com/corp/xweb/clientfiles/cgi_v2a/2021branding/css/css_fLqXpCsZC28Rf1C4Hod_hFXwPUhLJUclQV6Fqh6B-Tg.css
-https://use.fontawesome.com/releases/v6.4.2/css/all.css
-https://cgi.njoyn.com/corp/xweb/clientfiles/cgi_v2a/2021branding/css/all.css
-https://cgi.njoyn.com/corp/xweb/clientfiles/cgi_v2a/2021branding/css/1.css
-https://cgi.njoyn.com/corp/xweb/clientfiles/cgi_v2a/2021branding/css/njoyn.css
-https://cgi.njoyn.com/corp/xweb/clientfiles/cgi_v2a/2021branding/css/client.css?v=1.1
-https://cgi.njoyn.com/corp/xweb/clientfiles/cgi_v2a/2021branding/css/responsive.css
-https://cgi.njoyn.com/corp/xweb/clientfiles/cgi_v2a/2021branding/css/client-responsive.css
-https://cgi.njoyn.com/corp/xweb/clientfiles/cgi_v2a/2021branding/css/validation.css
-
-Observed font-family declarations:
-'Lucida Grande',Helvetica,Arial,Verdana,sans-serif
-Arial,sans-serif
-Arial,Helvetica,sans-serif
-'FontAwesome'
-'Nunito Sans'
-'Poppins'
-'Poppins Bold'
-'Poppins Light'
-'Poppins Medium'
-'Poppins SemiBold'
-sans-serif
-monospace,monospace
-fontawesome,sans-serif
-FontAwesome,sans-serif
-"Source Sans Pro",Arial
-"Source Sans Pro",Arial,Arial,sans-serif
-inherit
-fontAwesome,sans-serif
-"Source Sans Pro",Arial !important
-"Font Awesome 5 Brands",sans-serif
-'slick'
-'FontAwesome',sans-serif
-FontAwesome
-var(--fa-style-family,"Font Awesome 6 Free")
-"Font Awesome 6 Free"
-"Font Awesome 6 Brands"
-"Font Awesome 5 Brands"
-"Font Awesome 5 Free"
-"FontAwesome"
-'Source Sans Pro'
-Arial, Helvetica, sans-serif
-"Source Sans Pro", Arial
+Observed public font-family declarations include Poppins, Poppins Bold/Light/Medium/SemiBold, Source Sans Pro, and fallbacks.
+Campaign implementation: Poppins-like structural behavior through the licensed local/system substitute Arial/Helvetica for headings and Source Sans Pro-like system fallback for body. No proprietary font binaries are copied or committed.

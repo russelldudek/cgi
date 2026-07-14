@@ -1,0 +1,114 @@
+<svg aria-labelledby="load-title load-desc" class="load-diagram" role="img" viewbox="0 0 760 620">
+<title id="load-title">Enterprise GenAIOps architecture load test</title>
+<desc id="load-desc">A selected AI use case is tested through business outcome, pattern, data, identity, evaluation, observability, human authority and production ownership layers before receiving an architecture disposition.</desc>
+<defs>
+<pattern height="20" id="minor-grid" patternunits="userSpaceOnUse" width="20">
+<path d="M20 0H0V20" fill="none" stroke="rgba(255,255,255,.055)" stroke-width="1"></path>
+</pattern>
+<pattern height="100" id="major-grid" patternunits="userSpaceOnUse" width="100">
+<rect fill="url(#minor-grid)" height="100" width="100"></rect>
+<path d="M100 0H0V100" fill="none" stroke="rgba(255,255,255,.09)" stroke-width="1"></path>
+</pattern>
+<pattern height="8" id="warning-hatch" patterntransform="rotate(45)" patternunits="userSpaceOnUse" width="8">
+<line opacity=".45" stroke="#e31937" stroke-width="3" x1="0" x2="0" y1="0" y2="8"></line>
+</pattern>
+</defs>
+<rect class="diagram-grid" fill="url(#major-grid)" height="620" width="760" x="0" y="0"></rect>
+<g aria-hidden="true" class="diagram-dimensions">
+<line x1="74" x2="74" y1="88" y2="548"></line>
+<line x1="62" x2="86" y1="88" y2="88"></line>
+<line x1="62" x2="86" y1="548" y2="548"></line>
+<text transform="rotate(-90 46 325)" x="46" y="325">ENTERPRISE LOAD PATH</text>
+</g>
+<g class="usecase-load">
+<path d="M308 26H520L546 52L520 78H308L282 52Z"></path>
+<text text-anchor="middle" x="414" y="48">USE-CASE LOAD</text>
+<text class="usecase-name" data-field="shortTitle" text-anchor="middle" x="414" y="66">CONFIDENTIAL RAG</text>
+</g>
+<path class="load-spine" d="M414 78V548"></path>
+<path class="load-spine-live" d="M414 78V548"></path>
+<g class="architecture-layer" data-load-layer="outcome" style="--layer-index:0" transform="translate(0 112)">
+<rect class="layer-plate" height="44" width="588" x="120" y="0"></rect>
+<rect class="layer-alert" fill="url(#warning-hatch)" height="44" width="588" x="120" y="0"></rect>
+<line class="layer-tie" x1="120" x2="708" y1="22" y2="22"></line>
+<circle class="layer-node" cx="414" cy="22" r="8"></circle>
+<text class="layer-number" x="92" y="27">01</text>
+<text class="layer-name" x="140" y="19">BUSINESS OUTCOME</text>
+<text class="layer-copy" x="140" y="35">Consequence · value · user · economics</text>
+<text class="layer-state" text-anchor="end" x="684" y="27">READY</text>
+</g>
+<g class="architecture-layer" data-load-layer="pattern" style="--layer-index:1" transform="translate(0 166)">
+<rect class="layer-plate" height="44" width="588" x="120" y="0"></rect>
+<rect class="layer-alert" fill="url(#warning-hatch)" height="44" width="588" x="120" y="0"></rect>
+<line class="layer-tie" x1="120" x2="708" y1="22" y2="22"></line>
+<circle class="layer-node" cx="414" cy="22" r="8"></circle>
+<text class="layer-number" x="92" y="27">02</text>
+<text class="layer-name" x="140" y="19">REFERENCE PATTERN</text>
+<text class="layer-copy" x="140" y="35">RAG · document intelligence · agentic workflow</text>
+<text class="layer-state" text-anchor="end" x="684" y="27">READY</text>
+</g>
+<g class="architecture-layer" data-load-layer="data" style="--layer-index:2" transform="translate(0 220)">
+<rect class="layer-plate" height="44" width="588" x="120" y="0"></rect>
+<rect class="layer-alert" fill="url(#warning-hatch)" height="44" width="588" x="120" y="0"></rect>
+<line class="layer-tie" x1="120" x2="708" y1="22" y2="22"></line>
+<circle class="layer-node" cx="414" cy="22" r="8"></circle>
+<text class="layer-number" x="92" y="27">03</text>
+<text class="layer-name" x="140" y="19">DATA + RETRIEVAL</text>
+<text class="layer-copy" x="140" y="35">Provenance · entitlements · lineage · freshness</text>
+<text class="layer-state" text-anchor="end" x="684" y="27">READY</text>
+</g>
+<g class="architecture-layer" data-load-layer="identity" style="--layer-index:3" transform="translate(0 274)">
+<rect class="layer-plate" height="44" width="588" x="120" y="0"></rect>
+<rect class="layer-alert" fill="url(#warning-hatch)" height="44" width="588" x="120" y="0"></rect>
+<line class="layer-tie" x1="120" x2="708" y1="22" y2="22"></line>
+<circle class="layer-node" cx="414" cy="22" r="8"></circle>
+<text class="layer-number" x="92" y="27">04</text>
+<text class="layer-name" x="140" y="19">IDENTITY + SECURITY</text>
+<text class="layer-copy" x="140" y="35">Least privilege · isolation · policy · secrets</text>
+<text class="layer-state" text-anchor="end" x="684" y="27">READY</text>
+</g>
+<g class="architecture-layer" data-load-layer="evaluation" style="--layer-index:4" transform="translate(0 328)">
+<rect class="layer-plate" height="44" width="588" x="120" y="0"></rect>
+<rect class="layer-alert" fill="url(#warning-hatch)" height="44" width="588" x="120" y="0"></rect>
+<line class="layer-tie" x1="120" x2="708" y1="22" y2="22"></line>
+<circle class="layer-node" cx="414" cy="22" r="8"></circle>
+<text class="layer-number" x="92" y="27">05</text>
+<text class="layer-name" x="140" y="19">EVALUATION CONTRACT</text>
+<text class="layer-copy" x="140" y="35">Acceptance · regression · policy · recovery</text>
+<text class="layer-state" text-anchor="end" x="684" y="27">READY</text>
+</g>
+<g class="architecture-layer" data-load-layer="observability" style="--layer-index:5" transform="translate(0 382)">
+<rect class="layer-plate" height="44" width="588" x="120" y="0"></rect>
+<rect class="layer-alert" fill="url(#warning-hatch)" height="44" width="588" x="120" y="0"></rect>
+<line class="layer-tie" x1="120" x2="708" y1="22" y2="22"></line>
+<circle class="layer-node" cx="414" cy="22" r="8"></circle>
+<text class="layer-number" x="92" y="27">06</text>
+<text class="layer-name" x="140" y="19">OBSERVABILITY</text>
+<text class="layer-copy" x="140" y="35">Quality · cost · latency · drift · incidents</text>
+<text class="layer-state" text-anchor="end" x="684" y="27">READY</text>
+</g>
+<g class="architecture-layer" data-load-layer="authority" style="--layer-index:6" transform="translate(0 436)">
+<rect class="layer-plate" height="44" width="588" x="120" y="0"></rect>
+<rect class="layer-alert" fill="url(#warning-hatch)" height="44" width="588" x="120" y="0"></rect>
+<line class="layer-tie" x1="120" x2="708" y1="22" y2="22"></line>
+<circle class="layer-node" cx="414" cy="22" r="8"></circle>
+<text class="layer-number" x="92" y="27">07</text>
+<text class="layer-name" x="140" y="19">HUMAN AUTHORITY</text>
+<text class="layer-copy" x="140" y="35">Approval · escalation · exception · rollback</text>
+<text class="layer-state" text-anchor="end" x="684" y="27">READY</text>
+</g>
+<g class="architecture-layer" data-load-layer="ownership" style="--layer-index:7" transform="translate(0 490)">
+<rect class="layer-plate" height="44" width="588" x="120" y="0"></rect>
+<rect class="layer-alert" fill="url(#warning-hatch)" height="44" width="588" x="120" y="0"></rect>
+<line class="layer-tie" x1="120" x2="708" y1="22" y2="22"></line>
+<circle class="layer-node" cx="414" cy="22" r="8"></circle>
+<text class="layer-number" x="92" y="27">08</text>
+<text class="layer-name" x="140" y="19">PRODUCTION OWNERSHIP</text>
+<text class="layer-copy" x="140" y="35">Runbook · SLO · incident lead · evolution path</text>
+<text class="layer-state" text-anchor="end" x="684" y="27">READY</text>
+</g>
+<g class="foundation-mark" transform="translate(0 558)">
+<path d="M108 0H720M132 0L112 28M178 0L158 28M224 0L204 28M270 0L250 28M316 0L296 28M362 0L342 28M408 0L388 28M454 0L434 28M500 0L480 28M546 0L526 28M592 0L572 28M638 0L618 28M684 0L664 28"></path>
+<text text-anchor="middle" x="414" y="48">ENTERPRISE FOUNDATION · CLOUD · API · DATA · IDENTITY</text>
+</g>
+</svg>

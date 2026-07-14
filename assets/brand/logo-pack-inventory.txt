@@ -1,9 +1,0 @@
-.brand-work/logo-pack/CGI_logo_color_cmyk.eps
-.brand-work/logo-pack/CGI_logo_color_pantone.eps
-.brand-work/logo-pack/CGI_logo_color_rgb.eps
-.brand-work/logo-pack/CGI_logo_color_rgb.jpg
-.brand-work/logo-pack/CGI_logo_color_rgb.png
-.brand-work/logo-pack/CGI_logo_color_rgb.svg
-.brand-work/logo-pack/CGI_logo_rgb_white.eps
-.brand-work/logo-pack/CGI_logo_rgb_white.png
-.brand-work/logo-pack/CGI_logo_rgb_white.svg
